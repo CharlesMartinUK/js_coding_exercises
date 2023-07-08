@@ -11,18 +11,15 @@
  * @returns {Number}
  */
 export const sumMultiples = (arr) => {
-	if (arr === undefined) throw new Error('arr is required');
-    
-    let r = 0
-    
-    for(var c of arr){
-        
-        if((c % 3 == 0) || (c % 5 == 0)) r+=c
-        
-    }
-    
-    
-    return r
+  if (arr === undefined) throw new Error("arr is required");
+
+  let r = 0;
+
+  for (var c of arr) {
+    if (c % 3 == 0 || c % 5 == 0) r += c;
+  }
+
+  return r;
 };
 
 /**
@@ -31,20 +28,15 @@ export const sumMultiples = (arr) => {
  * @returns {Boolean}
  */
 export const isValidDNA = (str) => {
-	if (str === undefined) throw new Error('str is required');
-    
-    if(str.length == 0)
-        return false
-    
-    for(let c of str){
-        
-        if((c != "C") && (c != "G") && (c != "T") && (c != "A")) 
-            return false
-        
-    }
-    
-    return true
-    
+  if (str === undefined) throw new Error("str is required");
+
+  if (str.length == 0) return false;
+
+  for (let c of str) {
+    if (c != "C" && c != "G" && c != "T" && c != "A") return false;
+  }
+
+  return true;
 };
 
 /**
@@ -53,30 +45,28 @@ export const isValidDNA = (str) => {
  * @returns {String}
  */
 export const getComplementaryDNA = (str) => {
-	if (str === undefined) throw new Error('str is required');
-    
-    
-    let r = ""
-    
-    for(let c of str){
-        switch(c){
-            case "T":
-                r+="A"
-                break
-            case "C":
-                r+="G"
-                break
-            case "A":
-                r+="T"
-                break
-            case "G":
-                r+="C"
-                break
-        }
+  if (str === undefined) throw new Error("str is required");
+
+  let r = "";
+
+  for (let c of str) {
+    switch (c) {
+      case "T":
+        r += "A";
+        break;
+      case "C":
+        r += "G";
+        break;
+      case "A":
+        r += "T";
+        break;
+      case "G":
+        r += "C";
+        break;
     }
-    
-    return r
-    
+  }
+
+  return r;
 };
 
 /**
@@ -85,13 +75,13 @@ export const getComplementaryDNA = (str) => {
  * @returns {Boolean}
  */
 export const isItPrime = (n) => {
-	if (n === undefined) throw new Error('n is required');
-    
-    for(let i = 2; i < n;i++){
-        if(n % i === 0 ) return false
-    }
-    
-    return n > 1
+  if (n === undefined) throw new Error("n is required");
+
+  for (let i = 2; i < n; i++) {
+    if (n % i === 0) return false;
+  }
+
+  return n > 1;
 };
 
 /**
@@ -106,11 +96,10 @@ export const isItPrime = (n) => {
  * @returns {Array}
  */
 export const createMatrix = (n, fill) => {
-	if (n === undefined) throw new Error('n is required');
-	if (fill === undefined) throw new Error('fill is required');
-    
-    return Array(n).fill( Array(n).fill(fill) );
-    
+  if (n === undefined) throw new Error("n is required");
+  if (fill === undefined) throw new Error("fill is required");
+
+  return Array(n).fill(Array(n).fill(fill));
 };
 
 /**
@@ -126,16 +115,14 @@ export const createMatrix = (n, fill) => {
  * @returns {Boolean}
  */
 export const areWeCovered = (staff, day) => {
-	if (staff === undefined) throw new Error('staff is required');
-	if (day === undefined) throw new Error('day is required');
-    
-    var np = 0
-    
-    for(var c of staff) {
-        
-        if(c.rota.find(element => element == day) != undefined) 
-            np++
-    }
-    console.log(np)
-    return np >= 3
+  if (staff === undefined) throw new Error("staff is required");
+  if (day === undefined) throw new Error("day is required");
+
+  var np = 0;
+
+  for (var c of staff) {
+    if (c.rota.find((element) => element == day) != undefined) np++;
+  }
+  console.log(np);
+  return np >= 3;
 };

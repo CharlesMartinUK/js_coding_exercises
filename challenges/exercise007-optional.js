@@ -7,17 +7,16 @@
  * @param {Number} n
  */
 export const sumDigits = (n) => {
-	if (n === undefined) throw new Error('n is required');
-    
-    let s = n.toString()
-    let r = 0
-    
-    for(let c of s){
-        r += parseInt(c)
-    }
-    
-    return r
-    
+  if (n === undefined) throw new Error("n is required");
+
+  let s = n.toString();
+  let r = 0;
+
+  for (let c of s) {
+    r += parseInt(c);
+  }
+
+  return r;
 };
 
 /**
@@ -29,23 +28,19 @@ export const sumDigits = (n) => {
  * @param {Number} step
  */
 export const createRange = (start, end, step = 1) => {
-	if (start === undefined) throw new Error('start is required');
-	if (end === undefined) throw new Error('end is required');
-	
-    let length = Math.floor((end - start) / step)
-    
-    if(length <= 0)
-        return [0]
-    
-    
-    let a = new Array(length)
-    
-    for(let i = 0; i <= length;i++)
-        a[i] = (step * i)+ start
-    
-    
-    //let a = Array.apply(null, {length: length}).map(i => i* step)
-    return a
+  if (start === undefined) throw new Error("start is required");
+  if (end === undefined) throw new Error("end is required");
+
+  let length = Math.floor((end - start) / step);
+
+  if (length <= 0) return [0];
+
+  let a = new Array(length);
+
+  for (let i = 0; i <= length; i++) a[i] = step * i + start;
+
+  //let a = Array.apply(null, {length: length}).map(i => i* step)
+  return a;
 };
 
 /**
@@ -78,28 +73,25 @@ export const createRange = (start, end, step = 1) => {
  * @param {Array} users
  */
 export const getScreentimeAlertList = (users, date) => {
-	if (users === undefined) throw new Error('users is required');
-	if (date === undefined) throw new Error('date is required');
-    
-    
-    let found = []
-    
-    for(let c of users) {
-        for(let st of c.screenTime){
-            if(st.date == date) {
-                
-                let totalTime = 0
-                for(let u in st.usage){ 
-                    totalTime += st.usage[u]
-                } 
-                
-                if(totalTime > 100) found.push(c.username)
-            }
+  if (users === undefined) throw new Error("users is required");
+  if (date === undefined) throw new Error("date is required");
+
+  let found = [];
+
+  for (let c of users) {
+    for (let st of c.screenTime) {
+      if (st.date == date) {
+        let totalTime = 0;
+        for (let u in st.usage) {
+          totalTime += st.usage[u];
         }
-        
+
+        if (totalTime > 100) found.push(c.username);
+      }
     }
-    
-    return found
+  }
+
+  return found;
 };
 
 /**
@@ -113,10 +105,13 @@ export const getScreentimeAlertList = (users, date) => {
  * @param {String} str
  */
 export const hexToRGB = (hexStr) => {
-	if (hexStr === undefined) throw new Error('hexStr is required');
-    
-    return ['0x' + hexStr[1] + hexStr[2] | 0, '0x' + hexStr[3] + hexStr[4] | 0, '0x' + hexStr[5] + hexStr[6] | 0];
-    
+  if (hexStr === undefined) throw new Error("hexStr is required");
+
+  return [
+    ("0x" + hexStr[1] + hexStr[2]) | 0,
+    ("0x" + hexStr[3] + hexStr[4]) | 0,
+    ("0x" + hexStr[5] + hexStr[6]) | 0,
+  ];
 };
 
 /**
@@ -130,42 +125,41 @@ export const hexToRGB = (hexStr) => {
  * @param {Array} board
  */
 export const findWinner = (board) => {
-	if (board === undefined) throw new Error('board is required');
-    
-    
-    if (board.length != 3) throw new Error('3 x 3 board only');
-    
-    for(let y  = 0; y < board.length;y++) { 
-        for(let x = 0;x < board[y].length;x++) {
-            
-            //console.log("row :" ,board[y].length)
-            
-            if(board[y][x] != null) {
-                const p = board[y][x]
-                
-                if(x < board[y].length-2) { // horizontal
-                    //console.log("check horiz")
-                    if((board[y][x+1] == p) && (board[y][x+2] == p)) return p
-                }
-                
-                if(y < board.length-2) { // vertical
-                    console.log("check vert")
-                    if((board[y+1][x] == p) && (board[y+2][x] == p)) return p
-                }
-                
-                if((x < board[y].length-2) && (y < board.length-2)) { // diagonal down left
-                    if((board[y+1][x+1] == p) && (board[y+2][x+2] == p)) return p
-                }
-                
-                if((x == 0) && (y == board.length-1)) { // diagonal up left
-                    if((board[y-1][x+1] == p) && (board[y-2][x+2] == p)) return p
-                }
-                
-            }
-            
+  if (board === undefined) throw new Error("board is required");
+
+  if (board.length != 3) throw new Error("3 x 3 board only");
+
+  for (let y = 0; y < board.length; y++) {
+    for (let x = 0; x < board[y].length; x++) {
+      //console.log("row :" ,board[y].length)
+
+      if (board[y][x] != null) {
+        const p = board[y][x];
+
+        if (x < board[y].length - 2) {
+          // horizontal
+          //console.log("check horiz")
+          if (board[y][x + 1] == p && board[y][x + 2] == p) return p;
         }
+
+        if (y < board.length - 2) {
+          // vertical
+          console.log("check vert");
+          if (board[y + 1][x] == p && board[y + 2][x] == p) return p;
+        }
+
+        if (x < board[y].length - 2 && y < board.length - 2) {
+          // diagonal down left
+          if (board[y + 1][x + 1] == p && board[y + 2][x + 2] == p) return p;
+        }
+
+        if (x == 0 && y == board.length - 1) {
+          // diagonal up left
+          if (board[y - 1][x + 1] == p && board[y - 2][x + 2] == p) return p;
+        }
+      }
     }
-    
-    return null
-    
+  }
+
+  return null;
 };
