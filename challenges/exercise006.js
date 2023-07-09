@@ -123,6 +123,6 @@ export const areWeCovered = (staff, day) => {
   for (var c of staff) {
     if (c.rota.find((element) => element == day) != undefined) np++;
   }
-  console.log(np);
+  //console.log(np);
   return np >= 3;
 };
