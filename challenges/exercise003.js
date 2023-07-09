@@ -24,10 +24,6 @@ export function camelCaseWords(words) {
   return r;
 }
 
-console.log(camelCaseWords(["hello", "world", "stuff"]));
-
-console.log(camelCaseWords(["hello", "world", "stuff"]));
-
 export function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
   // Your code here!
