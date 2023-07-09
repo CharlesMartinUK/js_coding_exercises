@@ -144,7 +144,7 @@ export const findWinner = (board) => {
 
         if (y < board.length - 2) {
           // vertical
-          console.log("check vert");
+          //console.log("check vert");
           if (board[y + 1][x] == p && board[y + 2][x] == p) return p;
         }
 
